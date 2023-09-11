@@ -1,0 +1,22 @@
+services:
+  db:
+    image: docker.io/library/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - default
+    configs:
+      - mysql-config
+    volumes:
+      - ./db-data:/var/lib/mysql
+    # Comentado pois, ao rodar o main.py, caso o banco já
+    # esteja definido, o programa retorna um erro.
+    #  - ./ModeloFísicoCarRentall.sql:/docker-entrypoint-initdb.d/ModeloFísicoCarRentall.sql
+    restart: always
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_ONETIME_PASSWORD: yes
+      MYSQL_DATABASE: car_rental
+      MYSQL_USER: car_rental
+      MYSQL_PASSWORD: car_rental
+      TZ: America/Sao_paulo

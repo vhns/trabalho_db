@@ -1,0 +1,5 @@
+sqlalchemy
+urllib3
+sqlalchemy_utils
+pymysql
+cryptography
