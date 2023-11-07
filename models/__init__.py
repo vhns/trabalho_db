@@ -12,4 +12,3 @@ from models.person import Person
 from models.receiver import Receiver
 from models.receiver_center import Receiver_center
 from models.storage import Storage
-
