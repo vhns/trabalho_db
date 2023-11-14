@@ -16,7 +16,7 @@ services:
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: yes
       MYSQL_ONETIME_PASSWORD: yes
-      MYSQL_DATABASE: car_rental
-      MYSQL_USER: car_rental
-      MYSQL_PASSWORD: car_rental
+      MYSQL_DATABASE: dc_db
+      MYSQL_USER: dc_db
+      MYSQL_PASSWORD: dc_db
       TZ: America/Sao_paulo
