@@ -74,3 +74,46 @@ JOIN dc_db.employee emp ON p.id_employee = emp.id_employee
 LEFT JOIN dc_db.payment_desconts pd ON p.id_payment = pd.id_payment
 LEFT JOIN dc_db.desconts d ON pd.id_descont = d.id_descont;
 
+START TRANSACTION;
+SAVEPOINT salvamento1;
+INSERT INTO dc_db.person (person_name, birth_year, street, house_number, neighborhood, cpf, sex)
+VALUES 
+('Thiago', '1990-05-15', 'Rua A', 100, 'Centro', '12345678901', 'M');
+ROLLBACK TO SAVEPOINT salvamento1;
+COMMIT;
+
+START TRANSACTION;
+SAVEPOINT salvamento2;
+INSERT INTO dc_db.person (person_name, birth_year, street, house_number, neighborhood, cpf, sex)
+VALUES 
+('Ricardo', '1990-05-15', 'Rua A', 1002, 'Centro', '12345678901', 'M');
+ROLLBACK TO SAVEPOINT salvamento2;
+COMMIT;
+
+START TRANSACTION;
+INSERT INTO dc_db.pacient (id_pacient, blood_type)
+VALUES 
+(7, 'B-');
+ROLLBACK;
+COMMIT;
+
+START TRANSACTION;
+INSERT INTO dc_db.pacient (id_pacient, blood_type)
+VALUES 
+(8, 'O-');
+ROLLBACK;
+COMMIT;
+
+START TRANSACTION;
+INSERT INTO dc_db.storage (id_center, street, s_number, neighborhood)
+VALUES 
+(7, 'Rua Principal', 7, 'Centro');
+ROLLBACK;
+COMMIT;
+
+START TRANSACTION;
+INSERT INTO dc_db.storage (id_center, street, s_number, neighborhood)
+VALUES 
+(8, 'Rua Principal', 8, 'Centro');
+ROLLBACK;
+COMMIT;
